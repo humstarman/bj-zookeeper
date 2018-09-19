@@ -2,6 +2,18 @@
 
 set -ex
 
+for i in $(seq -s ' ' 1 10); do
+  COUNT=0
+  for j in $(seq -s ' ' 1 3); do
+    [[ -z $(getent hosts zoo${j}) ]] || COUNT=$[${COUNT}+1]
+  done
+  if [[ 3 == ${COUNT} ]]; then
+    sleep 1
+  else
+    break
+  fi
+done
+
 # Allow the container to be started with `--user`
 if [[ "$1" = 'zkServer.sh' && "$(id -u)" = '0' ]]; then
     chown -R "$ZOO_USER" "$ZOO_DATA_DIR" "$ZOO_DATA_LOG_DIR" "$ZOO_LOG_DIR"
