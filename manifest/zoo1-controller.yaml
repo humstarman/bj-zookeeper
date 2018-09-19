@@ -10,7 +10,8 @@ spec:
   template:
     metadata:
       labels:
-        component: zoo1
+        component: zoo
+        app: zoo1
     spec:
       terminationGracePeriodSeconds: 10
       containers:

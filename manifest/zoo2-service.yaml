@@ -3,12 +3,12 @@ kind: Service
 metadata:
   namespace: default
   labels:
-    component: zoo2 
+    app: zoo2 
   name: zoo2
 spec:
   clusterIP: None 
   selector:
-    component: zoo2
+    app: zoo2
   ports:
     - port: 2181
       targetPort: 2181

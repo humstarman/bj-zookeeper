@@ -17,3 +17,8 @@ deploy:
 clean: OP=delete
 clean:
 	@kubectl ${OP} -f ${MANIFEST}/.
+
+test:
+	-@kubectl exec -it zoo1-0 -- zkServer.sh status
+	-@kubectl exec -it zoo2-0 -- zkServer.sh status
+	@kubectl exec -it zoo3-0 -- zkServer.sh status
